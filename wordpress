@@ -1,13 +1,16 @@
 #!/bin/bash
 
+echo "alias s='sudo su -'" >> .bashrc
+
 yum -y update
 yum install -y httpd php php-mysql 
 
 
 wget https://wordpress.org/wordpress-5.1.1.tar.gz
 tar xzf wordpress-5.1.1.tar.gz -C /var/www/html/
+mv /var/www/html/wordpress/* /var/www/html/
 
-rm -rf wordpress
+rmdir /var/www/html/wordpress/
 rm -rf wordpress-5.1.1.tar.gz
 
 chmod -R 755 /var/www/html/wp-content
